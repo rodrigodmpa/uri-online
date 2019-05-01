@@ -1,63 +1,31 @@
-#include <iostream>
-#include <string>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-class Sapatos 
-{   
-    // Atributos públicos da classe
-    public: 
-    string procura,encontra;
-	int qnt_fem,qnt_masc;
-    
-    /* Construtor parametrizado para que possamos inicializar a classe com os atributos, o sapato que procuro e o que encontro
-	*  E as quantidades com zero.
-	*/
-    Sapatos(string a ,string b)
-    {   
-        procura = a;
-        encontra = b;
-		qnt_fem = 0;
-		qnt_masc = 0;
-    } 
-
-    // Metodo que calcula a quantidade de sapatos que tenho interesse
-    void calcula() 
-    {   
-		for(int i = 0; i < procura.length(); i += 5){
-    		if(procura[i] == encontra[0] && procura[i+1] == encontra[1]){
-    			if(procura[i+3] == 'M')
-    				qnt_masc++;
-    			else
-    				qnt_fem++;
-    		}
-    	}
-    }
-}; 
-
-int main() {
-	string procura, encontra;
-    int caso = 1;
-    
-
-    while(getline(cin, procura)){
-    	
-    	getline(cin, encontra);
-    	
-		Sapatos sapato(encontra,procura);
-
-		sapato.calcula();
-
-    	if(caso != 1)
-    		cout << endl;
-		
-    	cout << "Caso "<< caso <<":" << endl;
-    	cout << "Pares Iguais: " << sapato.qnt_masc + sapato.qnt_fem << endl;
-    	cout << "F: " << sapato.qnt_fem << endl;
-    	cout << "M: " << sapato.qnt_masc << endl;
-
-    	caso++;
-    }
-
-    return 0;
+int main(){
+	int i,j,k,l,m,n;
+	char ar[2000],br[1000],cr[1000];
+	stack<char>arif;
+	while(cin >> n && n){
+		for(i=0;i<n;i++)
+		cin >> ar[i];
+		for(i=0;i<n;i++)
+		cin >> br[i];
+		m = k = 0;
+		while(1){
+			if(!arif.empty() && m<n && arif.top() == br[m]){
+				arif.pop();
+				cout <<"R";
+				m++;
+			}else if(k<n){
+				cout<<"I";
+				arif.push(ar[k]);
+				k++;
+			}else break;
+		}
+		if(arif.empty()) cout<<endl;
+		else cout <<" Impossible\n";
+		while(!arif.empty())
+		arif.pop();
+	}
+  return 0;
 }
