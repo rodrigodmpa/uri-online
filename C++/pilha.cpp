@@ -48,24 +48,6 @@ void pilha::push(int x)
 	ponteiro[++topo] = x;
 }
 
-// Adicionar um elemento na base pilha
-void pilha::push2(int x)
-{
-	if (ehCheia())
-	{
-		cout << "Pilha estourou\nPrograma encerrado\n";
-		exit(EXIT_FAILURE);
-	}
-
-	cout << "Inserindo na base" << x << endl;
-	// Desloca todos os elementos para frente
-	ponteiro[++topo] = ponteiro[topo];
-	for(int i=topo;i>=0;i--){
-		ponteiro[i] = ponteiro[i+1];
-	}
-	ponteiro[0] = x;
-}
-
 // retirar o elemento que está no topo da pilha
 int pilha::pop()
 {
@@ -113,9 +95,6 @@ bool pilha::ehCheia()
 int main()
 {
 	pilha pt(3);
-
-	//pt.push2(1);
-	pt.push(2);
 
 	pt.pop();
 	pt.pop();
